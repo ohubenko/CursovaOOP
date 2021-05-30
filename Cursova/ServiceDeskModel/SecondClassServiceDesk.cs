@@ -9,7 +9,7 @@ namespace Cursova
             throw new NotImplementedException();
         }
 
-        public void add(Passanger passanger)
+        public void add(Human passanger)
         {
             throw new NotImplementedException();
         }
@@ -19,7 +19,7 @@ namespace Cursova
             throw new NotImplementedException();
         }
 
-        public void setStewaredss()
+        public void setStewaredss(Stewardess stewardess)
         {
             throw new NotImplementedException();
         }

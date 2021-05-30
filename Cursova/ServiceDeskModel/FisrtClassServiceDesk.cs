@@ -7,7 +7,7 @@
             throw new System.NotImplementedException();
         }
 
-        public void add(Passanger passanger)
+        public void add(Human passanger)
         {
             throw new System.NotImplementedException();
         }
@@ -17,7 +17,7 @@
             throw new System.NotImplementedException();
         }
 
-        public void setStewaredss()
+        public void setStewaredss(Stewardess stewardess)
         {
             throw new System.NotImplementedException();
         }

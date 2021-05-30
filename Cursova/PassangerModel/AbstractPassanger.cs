@@ -11,6 +11,11 @@ namespace Cursova
             Ticket = ticket;
         }
 
+        protected AbstractPassanger(Human human, Ticket ticket) : base(human.FirstName, human.LastName)
+        {
+            Ticket = ticket;
+        }
+
         public override string ToString()
         {
             return $"{base.ToString()}, ticket:{Ticket}";

@@ -3,8 +3,9 @@
     public interface ServiceFrontDesk
     {
         int sizeQueue();
-        void add(Passanger passanger);
+        void add(Human passanger);
         bool isWorked();
-        void setStewaredss();
+        void setStewaredss(Stewardess stewardess);
+        void startWork();
     }
 }
