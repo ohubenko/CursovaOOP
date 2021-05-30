@@ -28,6 +28,14 @@ namespace Cursova
             counter++;
         }
 
+        public Ticket(AirlineClass @class)
+        {
+            _class = @class;
+            TiecktId = counter;
+            cost = new Random().NextDouble() * 1000;
+            counter++;
+        }
+
         public Ticket()
         {
             TiecktId = counter;

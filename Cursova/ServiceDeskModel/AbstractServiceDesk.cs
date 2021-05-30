@@ -31,9 +31,37 @@ namespace Cursova
 
         public async void startWork()
         {
-            if (isWorked() && Humans.Count != 0)
+            while (isWorked() && Humans.Count > 0)
             {
-                new FirstclassPassanger("a", "a", new Ticket());
+                AirlineClass @class = genearateAirlineClass();
+                Passanger passanger = PassangerFactory.servicePassanger(Humans.Dequeue(), @class);
+                
+            }
+        }
+
+        private AirlineClass genearateAirlineClass()
+        {
+            return _random.Next(1, 2) switch
+            {
+                1 => AirlineClass.FIST,
+                2 => AirlineClass.SECOND,
+                _ => AirlineClass.SECOND
+            };
+        }
+
+        private static class PassangerFactory
+        {
+            public static Passanger servicePassanger(Human human, AirlineClass @class)
+            {
+                Ticket ticket = new Ticket(@class);
+                switch (@class)
+                {
+                    case AirlineClass.FIST:
+                        return new FirstclassPassanger(human, ticket);
+                    case AirlineClass.SECOND:
+                        return new SecondclassPassanger(human, ticket);
+                    default: return new SecondclassPassanger(human, ticket);
+                }
             }
         }
     }
