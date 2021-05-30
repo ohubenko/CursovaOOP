@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Cursova
 {
@@ -23,7 +24,7 @@ namespace Cursova
             {
                 AirlineClass @class = genearateAirlineClass();
                 Passanger passanger = PassangerFactory.servicePassanger(Humans.Dequeue(), @class);
-                
+                var timeService = _random.Next(1000, 60_000);
             }
         }
 

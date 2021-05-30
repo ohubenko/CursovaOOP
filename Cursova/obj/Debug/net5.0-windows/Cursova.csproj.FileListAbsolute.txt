@@ -14,3 +14,5 @@ C:\Users\sasha\RiderProjects\Cursova\Cursova\obj\Debug\net5.0-windows\Cursova.dl
 C:\Users\sasha\RiderProjects\Cursova\Cursova\obj\Debug\net5.0-windows\ref\Cursova.dll
 C:\Users\sasha\RiderProjects\Cursova\Cursova\obj\Debug\net5.0-windows\Cursova.pdb
 C:\Users\sasha\RiderProjects\Cursova\Cursova\obj\Debug\net5.0-windows\Cursova.genruntimeconfig.cache
+C:\Users\sasha\RiderProjects\Cursova\Cursova\obj\Debug\net5.0-windows\Cursova.Form1.resources
+C:\Users\sasha\RiderProjects\Cursova\Cursova\obj\Debug\net5.0-windows\Cursova.csproj.GenerateResource.cache
