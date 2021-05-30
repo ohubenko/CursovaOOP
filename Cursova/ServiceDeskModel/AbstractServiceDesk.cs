@@ -54,14 +54,12 @@ namespace Cursova
             public static Passanger servicePassanger(Human human, AirlineClass @class)
             {
                 Ticket ticket = new Ticket(@class);
-                switch (@class)
+                return @class switch
                 {
-                    case AirlineClass.FIST:
-                        return new FirstclassPassanger(human, ticket);
-                    case AirlineClass.SECOND:
-                        return new SecondclassPassanger(human, ticket);
-                    default: return new SecondclassPassanger(human, ticket);
-                }
+                    AirlineClass.FIST => new FirstclassPassanger(human, ticket),
+                    AirlineClass.SECOND => new SecondclassPassanger(human, ticket),
+                    _ => new SecondclassPassanger(human, ticket)
+                };
             }
         }
     }
