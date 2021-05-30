@@ -18,22 +18,18 @@ namespace Cursova
 
         /// <value>Ціна</value>>
         private double cost;
-        
-        /// <value>Номер літака</value>>
-        private int _planeNumber;
 
-        public Ticket(AirlineClass @class, double cost, int planeNumber)
+
+        public Ticket(AirlineClass @class, double cost)
         {
             TiecktId = counter;
             _class = @class;
             this.cost = cost;
-            _planeNumber = planeNumber;
             counter++;
         }
 
         public Ticket()
         {
-            _planeNumber = 0;
             TiecktId = counter;
             _class = AirlineClass.SECOND;
             cost = new Random().NextDouble() * 1000;

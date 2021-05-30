@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Cursova
 {
     public abstract class AbstractServiceDesk : ServiceFrontDesk
     {
         protected Stewardess Stewardess;
+        protected static Random _random = new Random();
         protected Queue<Human> Humans;
 
         public int sizeQueue()
@@ -27,10 +29,12 @@ namespace Cursova
             Stewardess = stewardess;
         }
 
-        public void startWork()
+        public async void startWork()
         {
-            //TODO: Обслуговування черги
-            throw new System.NotImplementedException();
+            if (isWorked() && Humans.Count != 0)
+            {
+                new FirstclassPassanger("a", "a", new Ticket());
+            }
         }
     }
 }
