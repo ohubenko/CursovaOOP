@@ -9,25 +9,13 @@ namespace Cursova
         protected static Random _random = new Random();
         protected Queue<Human> Humans;
 
-        public int sizeQueue()
-        {
-            return Humans.Count;
-        }
+        public int sizeQueue() => Humans.Count;
 
-        public void add(Human human)
-        {
-            Humans.Enqueue(human);
-        }
+        public void add(Human human) => Humans.Enqueue(human);
 
-        public bool isWorked()
-        {
-            return Stewardess != null;
-        }
+        public bool isWorked() => Stewardess != null;
 
-        public void setStewaredss(Stewardess stewardess)
-        {
-            Stewardess = stewardess;
-        }
+        public void setStewaredss(Stewardess stewardess) => Stewardess = stewardess;
 
         public async void startWork()
         {
