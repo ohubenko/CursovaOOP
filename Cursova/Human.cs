@@ -1,6 +1,6 @@
 ﻿namespace Cursova
 {
-    public abstract class Human
+    public class Human
     {
         protected string first_name;
         protected string last_name;
