@@ -13,6 +13,9 @@ namespace Cursova
         private Queue<Passanger> _passangersForWait;
         private Queue<Airplane> _airplanes;
         private Queue<Stewardess> _stewardesses;
+
+        #region Labels
+
         private Label _labelCountAirplane;
         private Label _labelCountStewardess;
         private Label _labelCountDesk;
@@ -20,6 +23,10 @@ namespace Cursova
         private Label _labelCountSecondClassDesk;
         private Label _labelCountHumanInQueue;
         private Label _labelSkippedHuman;
+
+        #endregion
+
+        #region Initialization
 
         public Airport(Label labelCountAirplane, Label labelCountStewardess, Label labelCountDesk,
             Label labelCountFirstClassDesk, Label labelCountSecondClassDesk, Label labelCountHumanInQueue,
@@ -50,6 +57,9 @@ namespace Cursova
             _labelCountHumanInQueue = labelCountHumanInQueue;
             _labelSkippedHuman = skippedHuman;
         }
+
+        #endregion
+
 
         public async void process()
         {
