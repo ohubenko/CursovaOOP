@@ -40,7 +40,7 @@ namespace Cursova
 
         private void stopAirplaneGenerate_Click(object sender, EventArgs e)
         {
-            Generator.stopAirplaneGenerate();
+            Generator.StopAirplaneGenerate();
         }
 
         private void addHumanToQeue_Click(object sender, EventArgs e)

@@ -60,12 +60,12 @@ namespace Cursova
 
         private async Task StartGenerationHuman()
         {
-            await Generator.generatePassanger(_frontDesks, _labelCountHumanInQueue, _labelSkippedHuman);
+            await Generator.GeneratePassanger(_frontDesks, _labelCountHumanInQueue, _labelSkippedHuman);
         }
 
         private async Task StartGenerationAirplane()
         {
-            await Generator.generateAirplane(_airplanes, _labelCountAirplane);
+            await Generator.GenerateAirplane(_airplanes, _labelCountAirplane);
         }
 
         public void StartPlane()
