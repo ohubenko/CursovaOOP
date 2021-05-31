@@ -60,6 +60,7 @@
             this.skippedHuman = new System.Windows.Forms.Label();
             this.totalFlyingPassanger = new System.Windows.Forms.Label();
             this.totalSellTicket = new System.Windows.Forms.Label();
+            this.stopAirplaneGenerate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
@@ -325,11 +326,22 @@
             this.totalSellTicket.TabIndex = 33;
             this.totalSellTicket.Text = "0";
             // 
+            // stopAirplaneGenerate
+            // 
+            this.stopAirplaneGenerate.Location = new System.Drawing.Point(582, 415);
+            this.stopAirplaneGenerate.Name = "stopAirplaneGenerate";
+            this.stopAirplaneGenerate.Size = new System.Drawing.Size(168, 23);
+            this.stopAirplaneGenerate.TabIndex = 34;
+            this.stopAirplaneGenerate.Text = "Зупинити генерацію літаків";
+            this.stopAirplaneGenerate.UseVisualStyleBackColor = true;
+            this.stopAirplaneGenerate.Click += new System.EventHandler(this.stopAirplaneGenerate_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 450);
+            this.Controls.Add(this.stopAirplaneGenerate);
             this.Controls.Add(this.totalSellTicket);
             this.Controls.Add(this.totalFlyingPassanger);
             this.Controls.Add(this.skippedHuman);
@@ -366,6 +378,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button stopAirplaneGenerate;
 
         private System.Windows.Forms.Label avgTimeRegister;
         private System.Windows.Forms.Label maxTimeSell;

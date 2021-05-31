@@ -47,6 +47,7 @@ namespace Cursova
         {
             await Generator.generateAirplane(_airplanes, _labelCountAirplane);
             Thread.Sleep(5000);
+            
         }
 
         public int getCountAirPlane()

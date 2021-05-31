@@ -37,5 +37,10 @@ namespace Cursova
         {
             airport.addStewardes();
         }
+
+        private void stopAirplaneGenerate_Click(object sender, EventArgs e)
+        {
+            Generator.stopAirplaneGenerate();
+        }
     }
 }

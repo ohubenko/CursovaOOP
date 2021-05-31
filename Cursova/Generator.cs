@@ -11,11 +11,13 @@ namespace Cursova
     public class Generator
     {
         private static Label countAirplane;
+        private static Timer airplaneTimer;
+        private static Timer passangerTimer;
         public static async Task generateAirplane(Queue<Airplane> queue, Label label)
         {
             countAirplane = label;
             TimerCallback timerCallback = addAirplane;
-            Timer timer = new Timer(timerCallback, queue, 0, 1000);
+            airplaneTimer = new Timer(timerCallback, queue, 0, 1000);
         }
 
         private static void addAirplane(object? state)
@@ -30,7 +32,10 @@ namespace Cursova
                 }
             }
         }
-        
-        
+
+        public static async void stopAirplaneGenerate()
+        {
+            await airplaneTimer.DisposeAsync();
+        }
     }
 }
