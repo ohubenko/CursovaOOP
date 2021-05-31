@@ -18,12 +18,14 @@ namespace Cursova
         private Label _labelCountFirstClassDesk;
         private Label _labelCountSecondClassDesk;
         private Label _labelCountHumanInQueue;
+        private Label _labelSkippedHuman;
 
         public Airport(Label labelCountAirplane, Label labelCountStewardess, Label labelCountDesk,
-            Label labelCountFirstClassDesk, Label labelCountSecondClassDesk, Label labelCountHumanInQueue)
+            Label labelCountFirstClassDesk, Label labelCountSecondClassDesk, Label labelCountHumanInQueue,
+            Label skippedHuman)
         {
             loadLabel(labelCountAirplane, labelCountStewardess, labelCountDesk, labelCountFirstClassDesk,
-                labelCountSecondClassDesk, labelCountHumanInQueue);
+                labelCountSecondClassDesk, labelCountHumanInQueue, skippedHuman);
             InitCollection();
         }
 
@@ -36,7 +38,8 @@ namespace Cursova
         }
 
         private void loadLabel(Label labelCountAirplane, Label labelCountStewardess, Label labelCountDesk,
-            Label labelCountFirstClassDesk, Label labelCountSecondClassDesk, Label labelCountHumanInQueue)
+            Label labelCountFirstClassDesk, Label labelCountSecondClassDesk, Label labelCountHumanInQueue,
+            Label skippedHuman)
         {
             _labelCountAirplane = labelCountAirplane;
             _labelCountStewardess = labelCountStewardess;
@@ -44,13 +47,14 @@ namespace Cursova
             _labelCountFirstClassDesk = labelCountFirstClassDesk;
             _labelCountSecondClassDesk = labelCountSecondClassDesk;
             _labelCountHumanInQueue = labelCountHumanInQueue;
+            _labelSkippedHuman = skippedHuman;
         }
 
         public async void process()
         {
             await Generator.generateAirplane(_airplanes, _labelCountAirplane);
             Thread.Sleep(5000);
-            await Generator.generatePassanger(_frontDesks, _labelCountHumanInQueue);
+            await Generator.generatePassanger(_frontDesks, _labelCountHumanInQueue, _labelSkippedHuman);
         }
 
         public void startPlane()
@@ -108,11 +112,18 @@ namespace Cursova
 
         public void addHuman()
         {
+            //TODO: Добавить ограніченіє через кастомне поле
             if (_frontDesks.Count > 0)
             {
                 ServiceFrontDesk minimalDesk = _frontDesks.OrderBy(desk => desk.sizeQueue()).First();
                 minimalDesk.add(new Human("Passanger", "random"));
                 _labelCountHumanInQueue.Text = _frontDesks.Sum(desk => desk.sizeQueue()).ToString();
+            }
+            else
+            {
+                var i = Parse(_labelSkippedHuman.Text);
+                i++;
+                _labelSkippedHuman.Text = i.ToString();
             }
         }
     }

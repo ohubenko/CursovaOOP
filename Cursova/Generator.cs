@@ -12,6 +12,7 @@ namespace Cursova
     {
         private static Label countAirplane;
         private static Label countQueueHuman;
+        private static Label skipped;
         private static Timer airplaneTimer;
         private static Timer passangerTimer;
 
@@ -22,9 +23,11 @@ namespace Cursova
             airplaneTimer = new Timer(timerCallback, queue, 0, 1000);
         }
 
-        public static async Task generatePassanger(List<ServiceFrontDesk> desks, Label label)
+        public static async Task generatePassanger(List<ServiceFrontDesk> desks, Label label, Label skipped)
         {
+            //TODO: add ограніченіє
             countQueueHuman = label;
+            Generator.skipped = skipped;
             TimerCallback timerCallback = addHuman;
             airplaneTimer = new Timer(timerCallback, desks, 0, 15_000);
         }
@@ -51,13 +54,19 @@ namespace Cursova
                 minimalDesk.add(new Human("Passanger", "random"));
                 countQueueHuman.Text = desks.Sum(desk => desk.sizeQueue()).ToString();
             }
+            else
+            {
+                var i = int.Parse(skipped.Text);
+                i++;
+                skipped.Text = i.ToString();
+            }
         }
 
         public static async void stopAirplaneGenerate()
         {
             await airplaneTimer.DisposeAsync();
         }
-        
+
         public static async void stopHumanGenerate()
         {
             await passangerTimer.DisposeAsync();

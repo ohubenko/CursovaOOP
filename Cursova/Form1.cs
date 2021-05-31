@@ -12,7 +12,7 @@ namespace Cursova
         {
             InitializeComponent();
             airport = new Airport(countOfAirplane, stewardessCount, serviceTableCount, countFirstClassServiceTable,
-                countSecondClassServiceTable, totalHumanQeue);
+                countSecondClassServiceTable, totalHumanQeue, skippedHuman);
             chooseTypeServiceDesk.SelectedIndex = 1;
         }
 
