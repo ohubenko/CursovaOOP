@@ -328,6 +328,7 @@
             this.totalSellTicket.Size = new System.Drawing.Size(67, 19);
             this.totalSellTicket.TabIndex = 33;
             this.totalSellTicket.Text = "0";
+            this.totalSellTicket.TextChanged += new System.EventHandler(this.totalSellTicket_TextChanged);
             // 
             // stopAirplaneGenerate
             // 
@@ -365,6 +366,7 @@
             this.totalRegisterPassanger.Size = new System.Drawing.Size(67, 19);
             this.totalRegisterPassanger.TabIndex = 37;
             this.totalRegisterPassanger.Text = "0";
+            this.totalRegisterPassanger.Click += new System.EventHandler(this.totalRegisterPassanger_Click);
             // 
             // Form1
             // 

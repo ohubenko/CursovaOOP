@@ -21,11 +21,6 @@ namespace Cursova
             return $"{base.ToString()}, ticket:{Ticket}";
         }
 
-        public void BuyTicket()
-        {
-            WriteLine("Ticket has been buy");
-        }
-
         public AirlineClass getClassPassanger() => Ticket.Class;
     }
 }

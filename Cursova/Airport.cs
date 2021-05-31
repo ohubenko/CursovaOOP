@@ -7,8 +7,13 @@ using static System.Int32;
 
 namespace Cursova
 {
+    /// <summary>
+    /// Класс аєропорту, композиція з списку стойок, черги на виліт, черга літаків які готові на виліт
+    /// Черга з стюардес
+    /// </summary>
     public class Airport
     {
+        ///<value> </value>
         private List<ServiceFrontDesk> _frontDesks;
         private Queue<Passanger> _passangersForWait;
         private Queue<Airplane> _airplanes;
@@ -59,8 +64,7 @@ namespace Cursova
         }
 
         #endregion
-
-
+        
         public async void process()
         {
             await StartGenerationAirplane();

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace Cursova
 {
@@ -12,7 +14,9 @@ namespace Cursova
         {
             if (passanger.getClassPassanger() == AirlineClass.FIST)
             {
-                
+                var registerTime = new Random().Next(1_000,30_000);
+                Thread.Sleep(registerTime);
+                passangersFoWaitngs.Enqueue(passanger);
             }
         }
     }

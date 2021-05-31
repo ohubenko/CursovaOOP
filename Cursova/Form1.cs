@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -46,6 +47,18 @@ namespace Cursova
         private void addHumanToQeue_Click(object sender, EventArgs e)
         {
             airport.AddHuman();
+        }
+
+        private void totalSellTicket_TextChanged(object sender, EventArgs e)
+        {
+            avgSellTime.Text = StatisticStorage.getAvgSellTime().ToString(CultureInfo.CurrentCulture);
+            maxTimeSell.Text = StatisticStorage.getMaximumSellTime().ToString();
+        }
+
+        private void totalRegisterPassanger_Click(object sender, EventArgs e)
+        {
+            avgTimeRegister.Text = StatisticStorage.getAvgRegisterTime().ToString(CultureInfo.CurrentCulture);
+            maxTimeReg.Text = StatisticStorage.getMaximumRegisterTime().ToString();
         }
     }
 }

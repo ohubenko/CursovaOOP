@@ -13,6 +13,7 @@ namespace Cursova
         private static Label _countAirplane;
         private static Label _countQueueHuman;
         private static Label _skipped;
+        
         private static Timer _airplaneTimer;
         private static Timer _passangerTimer;
 
