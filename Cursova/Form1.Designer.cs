@@ -62,6 +62,8 @@
             this.totalSellTicket = new System.Windows.Forms.Label();
             this.stopAirplaneGenerate = new System.Windows.Forms.Button();
             this.addHumanToQeue = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.totalRegisterPassanger = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -199,7 +201,7 @@
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(438, 84);
+            this.label10.Location = new System.Drawing.Point(438, 125);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(239, 19);
             this.label10.TabIndex = 17;
@@ -208,7 +210,7 @@
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(438, 101);
+            this.label11.Location = new System.Drawing.Point(438, 142);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(239, 19);
             this.label11.TabIndex = 18;
@@ -217,7 +219,7 @@
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(438, 153);
+            this.label13.Location = new System.Drawing.Point(438, 194);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(239, 19);
             this.label13.TabIndex = 20;
@@ -226,7 +228,7 @@
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(438, 136);
+            this.label14.Location = new System.Drawing.Point(438, 177);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(239, 19);
             this.label14.TabIndex = 19;
@@ -235,7 +237,7 @@
             // 
             // avgSellTime
             // 
-            this.avgSellTime.Location = new System.Drawing.Point(683, 82);
+            this.avgSellTime.Location = new System.Drawing.Point(683, 123);
             this.avgSellTime.Name = "avgSellTime";
             this.avgSellTime.Size = new System.Drawing.Size(67, 19);
             this.avgSellTime.TabIndex = 23;
@@ -272,7 +274,7 @@
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(438, 183);
+            this.label15.Location = new System.Drawing.Point(438, 224);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(239, 19);
             this.label15.TabIndex = 27;
@@ -281,7 +283,7 @@
             // 
             // avgTimeRegister
             // 
-            this.avgTimeRegister.Location = new System.Drawing.Point(683, 101);
+            this.avgTimeRegister.Location = new System.Drawing.Point(683, 142);
             this.avgTimeRegister.Name = "avgTimeRegister";
             this.avgTimeRegister.Size = new System.Drawing.Size(67, 19);
             this.avgTimeRegister.TabIndex = 28;
@@ -289,7 +291,7 @@
             // 
             // maxTimeSell
             // 
-            this.maxTimeSell.Location = new System.Drawing.Point(683, 136);
+            this.maxTimeSell.Location = new System.Drawing.Point(683, 177);
             this.maxTimeSell.Name = "maxTimeSell";
             this.maxTimeSell.Size = new System.Drawing.Size(67, 19);
             this.maxTimeSell.TabIndex = 29;
@@ -297,7 +299,7 @@
             // 
             // maxTimeReg
             // 
-            this.maxTimeReg.Location = new System.Drawing.Point(683, 153);
+            this.maxTimeReg.Location = new System.Drawing.Point(683, 194);
             this.maxTimeReg.Name = "maxTimeReg";
             this.maxTimeReg.Size = new System.Drawing.Size(67, 19);
             this.maxTimeReg.TabIndex = 30;
@@ -305,7 +307,7 @@
             // 
             // skippedHuman
             // 
-            this.skippedHuman.Location = new System.Drawing.Point(683, 183);
+            this.skippedHuman.Location = new System.Drawing.Point(683, 224);
             this.skippedHuman.Name = "skippedHuman";
             this.skippedHuman.Size = new System.Drawing.Size(67, 19);
             this.skippedHuman.TabIndex = 31;
@@ -347,11 +349,30 @@
             this.addHumanToQeue.UseVisualStyleBackColor = true;
             this.addHumanToQeue.Click += new System.EventHandler(this.addHumanToQeue_Click);
             // 
+            // label16
+            // 
+            this.label16.Location = new System.Drawing.Point(438, 70);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(239, 19);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "Всього зареєстровано пасажирів:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // totalRegisterPassanger
+            // 
+            this.totalRegisterPassanger.Location = new System.Drawing.Point(683, 70);
+            this.totalRegisterPassanger.Name = "totalRegisterPassanger";
+            this.totalRegisterPassanger.Size = new System.Drawing.Size(67, 19);
+            this.totalRegisterPassanger.TabIndex = 37;
+            this.totalRegisterPassanger.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 450);
+            this.Controls.Add(this.totalRegisterPassanger);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.addHumanToQeue);
             this.Controls.Add(this.stopAirplaneGenerate);
             this.Controls.Add(this.totalSellTicket);
@@ -390,6 +411,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label totalRegisterPassanger;
 
         private System.Windows.Forms.Button addHumanToQeue;
 
