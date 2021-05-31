@@ -24,7 +24,7 @@ namespace Cursova
 
         public static async Task generatePassanger(List<ServiceFrontDesk> desks, Label label)
         {
-            countAirplane = label;
+            countQueueHuman = label;
             TimerCallback timerCallback = addHuman;
             airplaneTimer = new Timer(timerCallback, desks, 0, 15_000);
         }
@@ -49,6 +49,7 @@ namespace Cursova
             {
                 ServiceFrontDesk minimalDesk = desks.OrderBy(desk => desk.sizeQueue()).First();
                 minimalDesk.add(new Human("Passanger", "random"));
+                countQueueHuman.Text = desks.Sum(desk => desk.sizeQueue()).ToString();
             }
         }
 
