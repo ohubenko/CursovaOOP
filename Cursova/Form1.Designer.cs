@@ -53,6 +53,13 @@
             this.chooseTypeServiceDesk = new System.Windows.Forms.ComboBox();
             this.addServiceDesk = new System.Windows.Forms.Button();
             this.addStewardess = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.avgTimeRegister = new System.Windows.Forms.Label();
+            this.maxTimeSell = new System.Windows.Forms.Label();
+            this.maxTimeReg = new System.Windows.Forms.Label();
+            this.skippedHuman = new System.Windows.Forms.Label();
+            this.totalFlyingPassanger = new System.Windows.Forms.Label();
+            this.totalSellTicket = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -261,11 +268,75 @@
             this.addStewardess.UseVisualStyleBackColor = true;
             this.addStewardess.Click += new System.EventHandler(this.addStewardess_Click);
             // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(438, 183);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(239, 19);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Люди, що пішли на вокзал:";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // avgTimeRegister
+            // 
+            this.avgTimeRegister.Location = new System.Drawing.Point(683, 101);
+            this.avgTimeRegister.Name = "avgTimeRegister";
+            this.avgTimeRegister.Size = new System.Drawing.Size(67, 19);
+            this.avgTimeRegister.TabIndex = 28;
+            this.avgTimeRegister.Text = "0";
+            // 
+            // maxTimeSell
+            // 
+            this.maxTimeSell.Location = new System.Drawing.Point(683, 136);
+            this.maxTimeSell.Name = "maxTimeSell";
+            this.maxTimeSell.Size = new System.Drawing.Size(67, 19);
+            this.maxTimeSell.TabIndex = 29;
+            this.maxTimeSell.Text = "0";
+            // 
+            // maxTimeReg
+            // 
+            this.maxTimeReg.Location = new System.Drawing.Point(683, 153);
+            this.maxTimeReg.Name = "maxTimeReg";
+            this.maxTimeReg.Size = new System.Drawing.Size(67, 19);
+            this.maxTimeReg.TabIndex = 30;
+            this.maxTimeReg.Text = "0";
+            // 
+            // skippedHuman
+            // 
+            this.skippedHuman.Location = new System.Drawing.Point(683, 183);
+            this.skippedHuman.Name = "skippedHuman";
+            this.skippedHuman.Size = new System.Drawing.Size(67, 19);
+            this.skippedHuman.TabIndex = 31;
+            this.skippedHuman.Text = "0";
+            // 
+            // totalFlyingPassanger
+            // 
+            this.totalFlyingPassanger.Location = new System.Drawing.Point(683, 51);
+            this.totalFlyingPassanger.Name = "totalFlyingPassanger";
+            this.totalFlyingPassanger.Size = new System.Drawing.Size(67, 19);
+            this.totalFlyingPassanger.TabIndex = 32;
+            this.totalFlyingPassanger.Text = "0";
+            // 
+            // totalSellTicket
+            // 
+            this.totalSellTicket.Location = new System.Drawing.Point(683, 28);
+            this.totalSellTicket.Name = "totalSellTicket";
+            this.totalSellTicket.Size = new System.Drawing.Size(67, 19);
+            this.totalSellTicket.TabIndex = 33;
+            this.totalSellTicket.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 450);
+            this.Controls.Add(this.totalSellTicket);
+            this.Controls.Add(this.totalFlyingPassanger);
+            this.Controls.Add(this.skippedHuman);
+            this.Controls.Add(this.maxTimeReg);
+            this.Controls.Add(this.maxTimeSell);
+            this.Controls.Add(this.avgTimeRegister);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.addStewardess);
             this.Controls.Add(this.addServiceDesk);
             this.Controls.Add(this.chooseTypeServiceDesk);
@@ -295,6 +366,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label avgTimeRegister;
+        private System.Windows.Forms.Label maxTimeSell;
+        private System.Windows.Forms.Label maxTimeReg;
+        private System.Windows.Forms.Label skippedHuman;
+        private System.Windows.Forms.Label totalFlyingPassanger;
+        private System.Windows.Forms.Label totalSellTicket;
 
         private System.Windows.Forms.Button addStewardess;
 

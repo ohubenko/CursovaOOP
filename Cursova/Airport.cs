@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using static System.Int32;
 
 namespace Cursova
 {
@@ -56,24 +56,26 @@ namespace Cursova
 
         public void startPlane()
         {
-            _airplanes.Dequeue();
-            var i = Int32.Parse(_labelCountAirplane.Text);
-            i--;
-            _labelCountAirplane.Text = i.ToString();
+            if (_airplanes.Count > 1)
+            {
+                _airplanes.Dequeue();
+                var i = Parse(_labelCountAirplane.Text);
+                i--;
+                _labelCountAirplane.Text = i.ToString();
+            }
         }
 
         public void addStewardes()
         {
             Stewardess stewardess = new Stewardess("Stewardess", "Worker");
             _stewardesses.Enqueue(stewardess);
-            var i = Int32.Parse(_labelCountStewardess.Text);
-            i++;
-            _labelCountStewardess.Text = i.ToString();
+            changeCount(_labelCountStewardess);
         }
 
         public void addServiceDesk(int num)
         {
-            if (_stewardesses.Count > 0){
+            if (_stewardesses.Count > 0)
+            {
                 switch (num)
                 {
                     case 0:
@@ -100,7 +102,7 @@ namespace Cursova
 
         private void changeCount(Label label)
         {
-            var i = int.Parse(label.Text);
+            var i = Parse(label.Text);
             i++;
             label.Text = i.ToString();
         }
