@@ -5,8 +5,8 @@ namespace Cursova
 {
     public class StatisticStorage
     {
-        private static List<int> sellTime;
-        private static List<int> registerTime;
+        private static List<int> sellTime = new List<int>();
+        private static List<int> registerTime = new List<int>();
 
         public static void addSelltime(int time) => sellTime.Add(time);
         public static void addRegisterTime(int time) => registerTime.Add(time);

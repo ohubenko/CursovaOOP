@@ -8,7 +8,7 @@ namespace Cursova
         void add(Human passanger);
         bool isWorked();
         void setStewaredss(Stewardess stewardess);
-        void sellTicket();
+        void sellTicket(Queue<Passanger> _passangersForWait);
         void register(Passanger passanger, Queue<Passanger> passangersFoWaitngs);
     }
 }

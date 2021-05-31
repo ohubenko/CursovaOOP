@@ -15,7 +15,9 @@ namespace Cursova
     {
         ///<value> </value>
         private List<ServiceFrontDesk> _frontDesks;
-        private Queue<Passanger> _passangersForWait;
+
+        private Queue<Passanger> _passangersWithTicket;
+        private Queue<Passanger> _passangersForArrival;
         private Queue<Airplane> _airplanes;
         private Queue<Stewardess> _stewardesses;
 
@@ -46,7 +48,7 @@ namespace Cursova
         {
             _airplanes = new Queue<Airplane>();
             _frontDesks = new List<ServiceFrontDesk>();
-            _passangersForWait = new Queue<Passanger>();
+            _passangersWithTicket = new Queue<Passanger>();
             _stewardesses = new Queue<Stewardess>();
         }
 
@@ -64,20 +66,34 @@ namespace Cursova
         }
 
         #endregion
-        
+
         public async void process()
         {
             await StartGenerationAirplane();
             Thread.Sleep(5000);
             await StartGenerationHuman();
+            Thread.Sleep(10_000);
+            
         }
 
-        private async Task StartGenerationHuman()
+        public void arrival()
+        {
+            var parallelLoopResult = Parallel.ForEach(_frontDesks,
+                desk => desk.register(_passangersWithTicket.Dequeue(), _passangersForArrival));
+            if (parallelLoopResult.IsCompleted)
+            {
+                _airplanes.Peek();
+                _passangersForArrival.Clear();
+            }
+        }
+
+
+        public async Task StartGenerationHuman()
         {
             await Generator.GeneratePassanger(_frontDesks, _labelCountHumanInQueue, _labelSkippedHuman);
         }
 
-        private async Task StartGenerationAirplane()
+        public async Task StartGenerationAirplane()
         {
             await Generator.GenerateAirplane(_airplanes, _labelCountAirplane);
         }

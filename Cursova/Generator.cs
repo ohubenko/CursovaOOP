@@ -16,12 +16,14 @@ namespace Cursova
         
         private static Timer _airplaneTimer;
         private static Timer _passangerTimer;
+        private static int _periodAirplane = 5_000;
+        private static int _periodHuman = 15_000;
 
         public static async Task GenerateAirplane(Queue<Airplane> queue, Label label)
         {
             _countAirplane = label;
             TimerCallback timerCallback = AddAirplane;
-            _airplaneTimer = new Timer(timerCallback, queue, 0, 1000);
+            _airplaneTimer = new Timer(timerCallback, queue, 0, _periodAirplane);
         }
 
         public static async Task GeneratePassanger(List<ServiceFrontDesk> desks, Label label, Label skipped)
@@ -30,7 +32,7 @@ namespace Cursova
             _countQueueHuman = label;
             _skipped = skipped;
             TimerCallback timerCallback = AddHuman;
-            _passangerTimer = new Timer(timerCallback, desks, 0, 15_000);
+            _passangerTimer = new Timer(timerCallback, desks, 0, _periodHuman);
         }
 
         private static void AddAirplane(object? state)

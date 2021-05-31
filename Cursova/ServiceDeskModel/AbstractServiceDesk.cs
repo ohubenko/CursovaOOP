@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Cursova
 {
@@ -24,7 +25,7 @@ namespace Cursova
 
         public void setStewaredss(Stewardess stewardess) => Stewardess = stewardess;
 
-        public void sellTicket()
+        public void sellTicket(Queue<Passanger> _passangersForWait)
         {
             while (isWorked())
             {
@@ -32,8 +33,10 @@ namespace Cursova
                 {
                     AirlineClass @class = genearateAirlineClass();
                     var timeService = _random.Next(1000, 60_000);
+                    StatisticStorage.addSelltime(timeService);
                     Thread.Sleep(timeService);
                     Passanger passanger = PassangerFactory.servicePassanger(Humans.Dequeue(), @class);
+                    _passangersForWait.Enqueue(passanger);
                 }
             }
         }
@@ -41,6 +44,7 @@ namespace Cursova
         public void register(Passanger passanger, Queue<Passanger> passangersFoWaitngs)
         {
             var timeService = _random.Next(1000, 60_000);
+            StatisticStorage.addRegisterTime(timeService);
             Thread.Sleep(timeService);
             passangersFoWaitngs.Enqueue(passanger);
         }

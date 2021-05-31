@@ -60,5 +60,28 @@ namespace Cursova
             avgTimeRegister.Text = StatisticStorage.getAvgRegisterTime().ToString(CultureInfo.CurrentCulture);
             maxTimeReg.Text = StatisticStorage.getMaximumRegisterTime().ToString();
         }
+
+
+        private async void countOfAirplane_TextChanged(object sender, EventArgs e)
+        {
+            // var thread = new Thread(o => { airport.arrival(); });
+            // thread.Start();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Generator.StopHumanGenerate();
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            await airport.StartGenerationHuman();
+        }
+
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            await airport.StartGenerationAirplane();
+        }
     }
 }
