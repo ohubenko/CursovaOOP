@@ -10,6 +10,12 @@ namespace Cursova
         protected static Random _random = new Random();
         protected Queue<Human> Humans;
 
+        protected AbstractServiceDesk(Stewardess stewardess)
+        {
+            Stewardess = stewardess;
+            Humans = new Queue<Human>();
+        }
+
         public int sizeQueue() => Humans.Count;
 
         public void add(Human human) => Humans.Enqueue(human);

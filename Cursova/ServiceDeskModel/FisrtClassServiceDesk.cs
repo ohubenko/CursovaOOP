@@ -1,25 +1,9 @@
 ﻿namespace Cursova
 {
-    public class FisrtClassServiceDesk : AbstractServiceDesk, ServiceFrontDesk
+    public class FisrtClassServiceDesk : AbstractServiceDesk
     {
-        public int sizeQueue()
+        public FisrtClassServiceDesk(Stewardess stewardess) : base(stewardess)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void add(Human passanger)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool isWorked()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void setStewaredss(Stewardess stewardess)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

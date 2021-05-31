@@ -2,26 +2,10 @@
 
 namespace Cursova
 {
-    public class SecondClassServiceDesk : AbstractServiceDesk, ServiceFrontDesk
+    public class SecondClassServiceDesk : AbstractServiceDesk
     {
-        public int sizeQueue()
+        public SecondClassServiceDesk(Stewardess stewardess) : base(stewardess)
         {
-            throw new NotImplementedException();
-        }
-
-        public void add(Human passanger)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool isWorked()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void setStewaredss(Stewardess stewardess)
-        {
-            throw new NotImplementedException();
         }
     }
 }
