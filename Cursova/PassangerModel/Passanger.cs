@@ -3,5 +3,6 @@
     public interface Passanger
     {
         void BuyTicket();
+        AirlineClass getClassPassanger();
     }
 }

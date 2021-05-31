@@ -1,4 +1,6 @@
-﻿namespace Cursova
+﻿using System.Collections.Generic;
+
+namespace Cursova
 {
     public interface ServiceFrontDesk
     {
@@ -6,6 +8,7 @@
         void add(Human passanger);
         bool isWorked();
         void setStewaredss(Stewardess stewardess);
-        void startWork();
+        void sellTicket();
+        void register(Passanger passanger, Queue<Passanger> passangersFoWaitngs);
     }
 }

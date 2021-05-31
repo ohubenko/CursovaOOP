@@ -10,10 +10,10 @@ namespace Cursova
 {
     public class Generator
     {
-        private static Label asdd;
+        private static Label countAirplane;
         public static async Task generateAirplane(Queue<Airplane> queue, Label label)
         {
-            asdd = label;
+            countAirplane = label;
             TimerCallback timerCallback = addAirplane;
             Timer timer = new Timer(timerCallback, queue, 0, 1000);
         }
@@ -21,11 +21,16 @@ namespace Cursova
         private static void addAirplane(object? state)
         {
             Queue<Airplane> airplanes = (Queue<Airplane>) state;
-            asdd.Text = (airplanes.Count).ToString();
-            if (airplanes != null && airplanes.Count < 10)
+            if (airplanes != null)
             {
-                airplanes.Enqueue(new Airplane(new Random().Next(999, 9999).ToString()));
+                countAirplane.Text = airplanes.Count.ToString();
+                if (airplanes.Count < 10)
+                {
+                    airplanes.Enqueue(new Airplane(new Random().Next(999, 9999).ToString()));
+                }
             }
         }
+        
+        
     }
 }

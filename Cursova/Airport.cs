@@ -12,10 +12,11 @@ namespace Cursova
         private Queue<Passanger> _passangersForWait;
         private Queue<Airplane> _airplanes = new Queue<Airplane>();
         private Queue<Stewardess> _stewardesses;
-        private Label _label;
+        private Label _labelCountAirplane;
+        
         public async void process(Label label)
         {
-            _label = label;
+            _labelCountAirplane = label;
             await Generator.generateAirplane(_airplanes,label);
             Thread.Sleep(5000);
         }
@@ -25,12 +26,17 @@ namespace Cursova
             return _airplanes.Count;
         }
 
-        public void poshe()
+        public void startPlane()
         {
             _airplanes.Dequeue();
-            var i = Int32.Parse(_label.Text);
+            var i = Int32.Parse(_labelCountAirplane.Text);
             i--;
-            _label.Text = i.ToString();
+            _labelCountAirplane.Text = i.ToString();
+        }
+
+        public void addStewardes()
+        {
+            
         }
     }
 }

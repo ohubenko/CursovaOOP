@@ -18,14 +18,22 @@ namespace Cursova
 
         public void setStewaredss(Stewardess stewardess) => Stewardess = stewardess;
 
-        public async void startWork()
+        public void sellTicket()
         {
             while (isWorked() && Humans.Count > 0)
             {
                 AirlineClass @class = genearateAirlineClass();
-                Passanger passanger = PassangerFactory.servicePassanger(Humans.Dequeue(), @class);
                 var timeService = _random.Next(1000, 60_000);
+                Thread.Sleep(timeService);
+                Passanger passanger = PassangerFactory.servicePassanger(Humans.Dequeue(), @class);
             }
+        }
+
+        public void register(Passanger passanger, Queue<Passanger> passangersFoWaitngs)
+        {
+            var timeService = _random.Next(1000, 60_000);
+            Thread.Sleep(timeService);
+            passangersFoWaitngs.Enqueue(passanger);
         }
 
         private AirlineClass genearateAirlineClass()
