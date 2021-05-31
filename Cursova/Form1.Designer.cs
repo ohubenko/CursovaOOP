@@ -52,6 +52,7 @@
             this.avgSellTime = new System.Windows.Forms.Label();
             this.chooseTypeServiceDesk = new System.Windows.Forms.ComboBox();
             this.addServiceDesk = new System.Windows.Forms.Button();
+            this.addStewardess = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
@@ -70,7 +71,7 @@
             this.countOfAirplane.Name = "countOfAirplane";
             this.countOfAirplane.Size = new System.Drawing.Size(103, 19);
             this.countOfAirplane.TabIndex = 2;
-            this.countOfAirplane.Text = "count";
+            this.countOfAirplane.Text = "0";
             // 
             // label2
             // 
@@ -135,7 +136,7 @@
             this.stewardessCount.Name = "stewardessCount";
             this.stewardessCount.Size = new System.Drawing.Size(103, 19);
             this.stewardessCount.TabIndex = 10;
-            this.stewardessCount.Text = "count";
+            this.stewardessCount.Text = "0";
             // 
             // serviceTableCount
             // 
@@ -143,7 +144,7 @@
             this.serviceTableCount.Name = "serviceTableCount";
             this.serviceTableCount.Size = new System.Drawing.Size(67, 19);
             this.serviceTableCount.TabIndex = 11;
-            this.serviceTableCount.Text = "count";
+            this.serviceTableCount.Text = "0";
             // 
             // countFirstClassServiceTable
             // 
@@ -151,7 +152,7 @@
             this.countFirstClassServiceTable.Name = "countFirstClassServiceTable";
             this.countFirstClassServiceTable.Size = new System.Drawing.Size(67, 19);
             this.countFirstClassServiceTable.TabIndex = 12;
-            this.countFirstClassServiceTable.Text = "count";
+            this.countFirstClassServiceTable.Text = "0";
             // 
             // countSecondClassServiceTable
             // 
@@ -159,7 +160,7 @@
             this.countSecondClassServiceTable.Name = "countSecondClassServiceTable";
             this.countSecondClassServiceTable.Size = new System.Drawing.Size(67, 19);
             this.countSecondClassServiceTable.TabIndex = 13;
-            this.countSecondClassServiceTable.Text = "count";
+            this.countSecondClassServiceTable.Text = "0";
             // 
             // label12
             // 
@@ -167,7 +168,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 19);
             this.label12.TabIndex = 14;
-            this.label12.Text = "count";
+            this.label12.Text = "0";
             // 
             // label8
             // 
@@ -229,7 +230,7 @@
             this.avgSellTime.Name = "avgSellTime";
             this.avgSellTime.Size = new System.Drawing.Size(67, 19);
             this.avgSellTime.TabIndex = 23;
-            this.avgSellTime.Text = "count";
+            this.avgSellTime.Text = "0";
             // 
             // chooseTypeServiceDesk
             // 
@@ -250,11 +251,22 @@
             this.addServiceDesk.UseVisualStyleBackColor = true;
             this.addServiceDesk.Click += new System.EventHandler(this.addServiceDesk_Click);
             // 
+            // addStewardess
+            // 
+            this.addStewardess.Location = new System.Drawing.Point(100, 415);
+            this.addStewardess.Name = "addStewardess";
+            this.addStewardess.Size = new System.Drawing.Size(238, 23);
+            this.addStewardess.TabIndex = 26;
+            this.addStewardess.Text = "Додати стюардесу що очікує вільної стійки";
+            this.addStewardess.UseVisualStyleBackColor = true;
+            this.addStewardess.Click += new System.EventHandler(this.addStewardess_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 450);
+            this.Controls.Add(this.addStewardess);
             this.Controls.Add(this.addServiceDesk);
             this.Controls.Add(this.chooseTypeServiceDesk);
             this.Controls.Add(this.avgSellTime);
@@ -283,6 +295,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button addStewardess;
+
+        private System.Windows.Forms.Button button1;
 
         private System.Windows.Forms.ComboBox chooseTypeServiceDesk;
         private System.Windows.Forms.Button addServiceDesk;

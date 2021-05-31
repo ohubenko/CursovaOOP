@@ -32,5 +32,10 @@ namespace Cursova
         {
             airport.addServiceDesk(chooseTypeServiceDesk.SelectedIndex);
         }
+
+        private void addStewardess_Click(object sender, EventArgs e)
+        {
+            airport.addStewardes();
+        }
     }
 }
