@@ -9,7 +9,7 @@
 
         public string LastName => last_name;
 
-        protected Human(string firstName, string lastName)
+        public Human(string firstName, string lastName)
         {
             first_name = firstName;
             last_name = lastName;

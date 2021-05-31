@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,13 +11,22 @@ namespace Cursova
     public class Generator
     {
         private static Label countAirplane;
+        private static Label countQueueHuman;
         private static Timer airplaneTimer;
         private static Timer passangerTimer;
+
         public static async Task generateAirplane(Queue<Airplane> queue, Label label)
         {
             countAirplane = label;
             TimerCallback timerCallback = addAirplane;
             airplaneTimer = new Timer(timerCallback, queue, 0, 1000);
+        }
+
+        public static async Task generatePassanger(List<ServiceFrontDesk> desks, Label label)
+        {
+            countAirplane = label;
+            TimerCallback timerCallback = addHuman;
+            airplaneTimer = new Timer(timerCallback, desks, 0, 15_000);
         }
 
         private static void addAirplane(object? state)
@@ -33,9 +42,24 @@ namespace Cursova
             }
         }
 
+        private static void addHuman(object? state)
+        {
+            List<ServiceFrontDesk> desks = (List<ServiceFrontDesk>) state;
+            if (desks != null && desks.Count > 0)
+            {
+                ServiceFrontDesk minimalDesk = desks.OrderBy(desk => desk.sizeQueue()).First();
+                minimalDesk.add(new Human("Passanger", "random"));
+            }
+        }
+
         public static async void stopAirplaneGenerate()
         {
             await airplaneTimer.DisposeAsync();
+        }
+        
+        public static async void stopHumanGenerate()
+        {
+            await passangerTimer.DisposeAsync();
         }
     }
 }
