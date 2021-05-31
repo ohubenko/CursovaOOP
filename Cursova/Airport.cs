@@ -53,11 +53,6 @@ namespace Cursova
             await Generator.generatePassanger(_frontDesks, _labelCountHumanInQueue);
         }
 
-        public int getCountAirPlane()
-        {
-            return _airplanes.Count;
-        }
-
         public void startPlane()
         {
             if (_airplanes.Count > 1)
@@ -111,9 +106,14 @@ namespace Cursova
             label.Text = i.ToString();
         }
 
-        public int getCountHumanInQueue()
+        public void addHuman()
         {
-            return _frontDesks.Sum(desk => desk.sizeQueue());
+            if (_frontDesks.Count > 0)
+            {
+                ServiceFrontDesk minimalDesk = _frontDesks.OrderBy(desk => desk.sizeQueue()).First();
+                minimalDesk.add(new Human("Passanger", "random"));
+                _labelCountHumanInQueue.Text = _frontDesks.Sum(desk => desk.sizeQueue()).ToString();
+            }
         }
     }
 }

@@ -61,6 +61,7 @@
             this.totalFlyingPassanger = new System.Windows.Forms.Label();
             this.totalSellTicket = new System.Windows.Forms.Label();
             this.stopAirplaneGenerate = new System.Windows.Forms.Button();
+            this.addHumanToQeue = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
@@ -336,11 +337,22 @@
             this.stopAirplaneGenerate.UseVisualStyleBackColor = true;
             this.stopAirplaneGenerate.Click += new System.EventHandler(this.stopAirplaneGenerate_Click);
             // 
+            // addHumanToQeue
+            // 
+            this.addHumanToQeue.Location = new System.Drawing.Point(160, 386);
+            this.addHumanToQeue.Name = "addHumanToQeue";
+            this.addHumanToQeue.Size = new System.Drawing.Size(144, 23);
+            this.addHumanToQeue.TabIndex = 35;
+            this.addHumanToQeue.Text = "Додати людину до черги";
+            this.addHumanToQeue.UseVisualStyleBackColor = true;
+            this.addHumanToQeue.Click += new System.EventHandler(this.addHumanToQeue_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 450);
+            this.Controls.Add(this.addHumanToQeue);
             this.Controls.Add(this.stopAirplaneGenerate);
             this.Controls.Add(this.totalSellTicket);
             this.Controls.Add(this.totalFlyingPassanger);
@@ -378,6 +390,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button addHumanToQeue;
 
         private System.Windows.Forms.Label totalHumanQeue;
 

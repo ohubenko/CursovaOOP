@@ -42,6 +42,10 @@ namespace Cursova
         {
             Generator.stopAirplaneGenerate();
         }
-        
+
+        private void addHumanToQeue_Click(object sender, EventArgs e)
+        {
+            airport.addHuman();
+        }
     }
 }
