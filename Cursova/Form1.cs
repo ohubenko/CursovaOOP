@@ -12,7 +12,7 @@ namespace Cursova
         {
             InitializeComponent();
             airport = new Airport(countOfAirplane, stewardessCount, serviceTableCount, countFirstClassServiceTable,
-                countSecondClassServiceTable);
+                countSecondClassServiceTable, totalHumanQeue);
             chooseTypeServiceDesk.SelectedIndex = 1;
         }
 
@@ -42,5 +42,6 @@ namespace Cursova
         {
             Generator.stopAirplaneGenerate();
         }
+        
     }
 }

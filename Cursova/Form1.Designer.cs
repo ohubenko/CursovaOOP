@@ -42,7 +42,7 @@
             this.serviceTableCount = new System.Windows.Forms.Label();
             this.countFirstClassServiceTable = new System.Windows.Forms.Label();
             this.countSecondClassServiceTable = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.totalHumanQeue = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -170,13 +170,13 @@
             this.countSecondClassServiceTable.TabIndex = 13;
             this.countSecondClassServiceTable.Text = "0";
             // 
-            // label12
+            // totalHumanQeue
             // 
-            this.label12.Location = new System.Drawing.Point(192, 124);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 19);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "0";
+            this.totalHumanQeue.Location = new System.Drawing.Point(192, 124);
+            this.totalHumanQeue.Name = "totalHumanQeue";
+            this.totalHumanQeue.Size = new System.Drawing.Size(67, 19);
+            this.totalHumanQeue.TabIndex = 14;
+            this.totalHumanQeue.Text = "0";
             // 
             // label8
             // 
@@ -359,7 +359,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.totalHumanQeue);
             this.Controls.Add(this.countSecondClassServiceTable);
             this.Controls.Add(this.countFirstClassServiceTable);
             this.Controls.Add(this.serviceTableCount);
@@ -379,6 +379,8 @@
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Label totalHumanQeue;
+
         private System.Windows.Forms.Button stopAirplaneGenerate;
 
         private System.Windows.Forms.Label avgTimeRegister;
@@ -389,8 +391,6 @@
         private System.Windows.Forms.Label totalSellTicket;
 
         private System.Windows.Forms.Button addStewardess;
-
-        private System.Windows.Forms.Button button1;
 
         private System.Windows.Forms.ComboBox chooseTypeServiceDesk;
         private System.Windows.Forms.Button addServiceDesk;

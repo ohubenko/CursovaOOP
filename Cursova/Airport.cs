@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using static System.Int32;
@@ -16,12 +17,13 @@ namespace Cursova
         private Label _labelCountDesk;
         private Label _labelCountFirstClassDesk;
         private Label _labelCountSecondClassDesk;
+        private Label _labelCountHumanInQueue;
 
         public Airport(Label labelCountAirplane, Label labelCountStewardess, Label labelCountDesk,
-            Label labelCountFirstClassDesk, Label labelCountSecondClassDesk)
+            Label labelCountFirstClassDesk, Label labelCountSecondClassDesk, Label labelCountHumanInQueue)
         {
             loadLabel(labelCountAirplane, labelCountStewardess, labelCountDesk, labelCountFirstClassDesk,
-                labelCountSecondClassDesk);
+                labelCountSecondClassDesk, labelCountHumanInQueue);
             InitCollection();
         }
 
@@ -34,20 +36,21 @@ namespace Cursova
         }
 
         private void loadLabel(Label labelCountAirplane, Label labelCountStewardess, Label labelCountDesk,
-            Label labelCountFirstClassDesk, Label labelCountSecondClassDesk)
+            Label labelCountFirstClassDesk, Label labelCountSecondClassDesk, Label labelCountHumanInQueue)
         {
             _labelCountAirplane = labelCountAirplane;
             _labelCountStewardess = labelCountStewardess;
             _labelCountDesk = labelCountDesk;
             _labelCountFirstClassDesk = labelCountFirstClassDesk;
             _labelCountSecondClassDesk = labelCountSecondClassDesk;
+            _labelCountHumanInQueue = labelCountHumanInQueue;
         }
 
         public async void process()
         {
             await Generator.generateAirplane(_airplanes, _labelCountAirplane);
             Thread.Sleep(5000);
-            await Generator.generatePassanger(_frontDesks, _labelCountSecondClassDesk);
+            await Generator.generatePassanger(_frontDesks, _labelCountHumanInQueue);
         }
 
         public int getCountAirPlane()
@@ -106,6 +109,11 @@ namespace Cursova
             var i = Parse(label.Text);
             i++;
             label.Text = i.ToString();
+        }
+
+        public int getCountHumanInQueue()
+        {
+            return _frontDesks.Sum(desk => desk.sizeQueue());
         }
     }
 }
