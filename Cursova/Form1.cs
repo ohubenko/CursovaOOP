@@ -25,17 +25,17 @@ namespace Cursova
 
         private void button2_Click(object sender, EventArgs e)
         {
-            airport.startPlane();
+            airport.StartPlane();
         }
 
         private void addServiceDesk_Click(object sender, EventArgs e)
         {
-            airport.addServiceDesk(chooseTypeServiceDesk.SelectedIndex);
+            airport.AddServiceDesk(chooseTypeServiceDesk.SelectedIndex);
         }
 
         private void addStewardess_Click(object sender, EventArgs e)
         {
-            airport.addStewardes();
+            airport.AddStewardes();
         }
 
         private void stopAirplaneGenerate_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Cursova
 
         private void addHumanToQeue_Click(object sender, EventArgs e)
         {
-            airport.addHuman();
+            airport.AddHuman();
         }
     }
 }

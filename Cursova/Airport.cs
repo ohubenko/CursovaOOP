@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Int32;
 
@@ -52,12 +53,22 @@ namespace Cursova
 
         public async void process()
         {
-            await Generator.generateAirplane(_airplanes, _labelCountAirplane);
+            await StartGenerationAirplane();
             Thread.Sleep(5000);
+            await StartGenerationHuman();
+        }
+
+        private async Task StartGenerationHuman()
+        {
             await Generator.generatePassanger(_frontDesks, _labelCountHumanInQueue, _labelSkippedHuman);
         }
 
-        public void startPlane()
+        private async Task StartGenerationAirplane()
+        {
+            await Generator.generateAirplane(_airplanes, _labelCountAirplane);
+        }
+
+        public void StartPlane()
         {
             if (_airplanes.Count > 1)
             {
@@ -68,14 +79,14 @@ namespace Cursova
             }
         }
 
-        public void addStewardes()
+        public void AddStewardes()
         {
             Stewardess stewardess = new Stewardess("Stewardess", "Worker");
             _stewardesses.Enqueue(stewardess);
             changeCount(_labelCountStewardess);
         }
 
-        public void addServiceDesk(int num)
+        public void AddServiceDesk(int num)
         {
             if (_stewardesses.Count > 0)
             {
@@ -110,7 +121,7 @@ namespace Cursova
             label.Text = i.ToString();
         }
 
-        public void addHuman()
+        public void AddHuman()
         {
             //TODO: Добавить ограніченіє через кастомне поле
             if (_frontDesks.Count > 0)
