@@ -18,7 +18,7 @@ namespace Cursova
         private static Timer _passangerTimer;
         
         private static int _periodAirplane = 15_000;
-        private static int _periodHuman = 1_000;
+        private static int _periodHuman = 10_000;
         
         private static AutoResetEvent waitHendler = new AutoResetEvent(true);
 

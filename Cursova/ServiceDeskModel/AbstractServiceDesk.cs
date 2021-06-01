@@ -40,9 +40,14 @@ namespace Cursova
                     StatisticStorage.addSelltime(timeService);
                     Human peekHuman = Humans.Dequeue();
                     Thread.Sleep(timeService);
-                    Passanger passanger = PassangerFactory.servicePassanger(peekHuman, @class);
-                    _passangersForWait.Enqueue(passanger);
-                    StatisticStorage.addTotalSell();
+                    Ticket ticket = new Ticket(@class);
+                    if (peekHuman.canBuyTicket(ticket))
+                    {
+                        Passanger passanger = PassangerFactory.servicePassanger(peekHuman, ticket);
+                        _passangersForWait.Enqueue(passanger);
+                        StatisticStorage.addTotalSell();
+                    }
+
                     waitHendler.Set();
                 }
             }
@@ -51,7 +56,7 @@ namespace Cursova
         public void register(Passanger passanger, Queue<Passanger> passangersFoWaitngs)
         {
             waitHendler2.WaitOne();
-            var timeService = _random.Next(1000, 60_000);
+            var timeService = _random.Next(1000, 2_000);
             StatisticStorage.addRegisterTime(timeService);
             Thread.Sleep(timeService);
             passangersFoWaitngs.Enqueue(passanger);

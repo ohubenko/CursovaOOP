@@ -2,10 +2,9 @@
 {
     public static class PassangerFactory
     {
-        public static Passanger servicePassanger(Human human, AirlineClass @class)
+        public static Passanger servicePassanger(Human human, Ticket ticket)
         {
-            Ticket ticket = new Ticket(@class);
-            return @class switch
+            return ticket.Class switch
             {
                 AirlineClass.FIST => new FirstclassPassanger(human, ticket),
                 AirlineClass.SECOND => new SecondclassPassanger(human, ticket),

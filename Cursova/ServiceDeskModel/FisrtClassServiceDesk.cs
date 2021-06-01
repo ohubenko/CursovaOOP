@@ -17,14 +17,14 @@ namespace Cursova
             waitHendler.WaitOne();
             if (passanger.getClassPassanger() == AirlineClass.FIST)
             {
-                var registerTime = new Random().Next(1_000, 30_000);
+                var registerTime = new Random().Next(1_000, 2_000);
                 StatisticStorage.addRegisterTime(registerTime);
                 Thread.Sleep(registerTime);
                 passangersFoWaitngs.Enqueue(passanger);
             }
             else
             {
-                var timeService = _random.Next(1000, 60_000);
+                var timeService = _random.Next(1000, 2_000);
                 StatisticStorage.addRegisterTime(timeService);
                 Thread.Sleep(timeService);
                 passangersFoWaitngs.Enqueue(passanger);
