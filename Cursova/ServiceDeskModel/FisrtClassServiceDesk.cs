@@ -15,7 +15,7 @@ namespace Cursova
         public void register(Passanger passanger, Queue<Passanger> passangersFoWaitngs)
         {
             waitHendler.WaitOne();
-            if (passanger.getClassPassanger() == AirlineClass.FIST)
+            if (passanger.getClassPassanger() == AirlineClass.FIRST)
             {
                 var registerTime = new Random().Next(1_000, 2_000);
                 StatisticStorage.addRegisterTime(registerTime);

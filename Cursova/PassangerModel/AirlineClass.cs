@@ -2,7 +2,7 @@
 {
     public enum AirlineClass
     {
-        FIST,
+        FIRST,
         SECOND
     }
 }

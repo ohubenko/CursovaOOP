@@ -68,7 +68,7 @@ namespace Cursova
         {
             return _random.Next(1, 2) switch
             {
-                1 => AirlineClass.FIST,
+                1 => AirlineClass.FIRST,
                 2 => AirlineClass.SECOND,
                 _ => AirlineClass.SECOND
             };
