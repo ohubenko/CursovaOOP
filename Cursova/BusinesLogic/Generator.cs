@@ -16,10 +16,11 @@ namespace Cursova
 
         private static Timer _airplaneTimer;
         private static Timer _passangerTimer;
-        
+
         private static int _periodAirplane = 15_000;
         private static int _periodHuman = 10_000;
-        
+        public static int CriticalSize = 10;
+
         private static AutoResetEvent waitHendler = new AutoResetEvent(true);
 
         public static async Task GenerateAirplane(Queue<Airplane> queue, Label label)
@@ -31,7 +32,6 @@ namespace Cursova
 
         public static async Task GeneratePassanger(List<ServiceFrontDesk> desks, Label label, Label skipped)
         {
-            //TODO: add огранічені
             _countQueueHuman = label;
             _skipped = skipped;
             TimerCallback timerCallback = AddHuman;
@@ -55,7 +55,8 @@ namespace Cursova
         {
             waitHendler.WaitOne();
             List<ServiceFrontDesk> desks = (List<ServiceFrontDesk>) state;
-            if (desks != null && desks.Count > 0)
+            int size = desks.Count != 0 ? desks.Sum(desk => desk.sizeQueue()) : 0;
+            if (desks != null && desks.Count > 0 && CriticalSize < size)
             {
                 ServiceFrontDesk minimalDesk = desks.OrderBy(desk => desk.sizeQueue()).First();
                 minimalDesk.add(new Human("Passanger", "random"));
@@ -70,6 +71,7 @@ namespace Cursova
                 i++;
                 _skipped.Invoke(new Action(() => { _skipped.Text = i.ToString(); }));
             }
+
             waitHendler.Set();
         }
 

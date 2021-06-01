@@ -18,6 +18,7 @@ namespace Cursova
             StatisticStorage.setTotalSellLabel(totalSellTicket);
             StatisticStorage.setTotalFlyingLabel(totalFlyingPassanger);
             StatisticStorage.setTotalRegisterLabel(totalRegisterPassanger);
+            airport.CriticalSize = 10;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -94,6 +95,12 @@ namespace Cursova
             });
             thread.IsBackground = true;
             thread.Start();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            airport.CriticalSize = int.Parse(textBox1.Text);
+            Generator.CriticalSize = int.Parse(textBox1.Text);
         }
     }
 }

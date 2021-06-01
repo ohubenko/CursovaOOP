@@ -31,6 +31,7 @@ namespace Cursova
         private Label _labelCountSecondClassDesk;
         private Label _labelCountHumanInQueue;
         private Label _labelSkippedHuman;
+        public int CriticalSize;
 
         #endregion
 
@@ -171,8 +172,8 @@ namespace Cursova
 
         public void AddHuman()
         {
-            //TODO: Добавить ограніченіє через кастомне поле
-            if (_frontDesks.Count > 0)
+            int size = _frontDesks.Count != 0 ? _frontDesks.Sum(desk => desk.sizeQueue()) : 0;
+            if (_frontDesks.Count > 0 && CriticalSize < size )
             {
                 ServiceFrontDesk minimalDesk = _frontDesks.OrderBy(desk => desk.sizeQueue()).First();
                 minimalDesk.add(new Human("Passanger", "random"));
