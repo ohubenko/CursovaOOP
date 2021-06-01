@@ -15,11 +15,15 @@ namespace Cursova
             airport = new Airport(countOfAirplane, stewardessCount, serviceTableCount, countFirstClassServiceTable,
                 countSecondClassServiceTable, totalHumanQeue, skippedHuman);
             chooseTypeServiceDesk.SelectedIndex = 1;
+            StatisticStorage.setTotalSellLabel(totalSellTicket);
+            StatisticStorage.setTotalFlyingLabel(totalFlyingPassanger);
+            StatisticStorage.setTotalRegisterLabel(totalRegisterPassanger);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             var thread = new Thread(o => { airport.process(); });
+            thread.Name = "Genearator";
             thread.IsBackground = true;
             thread.Start();
         }
@@ -53,6 +57,7 @@ namespace Cursova
         {
             avgSellTime.Text = StatisticStorage.getAvgSellTime().ToString(CultureInfo.CurrentCulture);
             maxTimeSell.Text = StatisticStorage.getMaximumSellTime().ToString();
+            totalHumanQeue.Text = airport.GetTotalSizeQueueToDesks().ToString();
         }
 
         private void totalRegisterPassanger_Click(object sender, EventArgs e)
@@ -62,10 +67,11 @@ namespace Cursova
         }
 
 
-        private async void countOfAirplane_TextChanged(object sender, EventArgs e)
+        private void countOfAirplane_TextChanged(object sender, EventArgs e)
         {
-            // var thread = new Thread(o => { airport.arrival(); });
-            // thread.Start();
+            var thread = new Thread(o => { airport.arrival(); });
+            thread.IsBackground = true;
+            thread.Start();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,6 +88,11 @@ namespace Cursova
         private async void button4_Click(object sender, EventArgs e)
         {
             await airport.StartGenerationAirplane();
+        }
+
+        private void start_Click(object sender, EventArgs e)
+        {
+            airport.startSell();
         }
     }
 }

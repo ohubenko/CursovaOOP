@@ -67,11 +67,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.start = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 415);
+            this.button2.Location = new System.Drawing.Point(178, 348);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -253,12 +254,12 @@
             this.chooseTypeServiceDesk.Items.AddRange(new object[] {"First", "Second"});
             this.chooseTypeServiceDesk.Location = new System.Drawing.Point(12, 153);
             this.chooseTypeServiceDesk.Name = "chooseTypeServiceDesk";
-            this.chooseTypeServiceDesk.Size = new System.Drawing.Size(121, 21);
+            this.chooseTypeServiceDesk.Size = new System.Drawing.Size(133, 21);
             this.chooseTypeServiceDesk.TabIndex = 24;
             // 
             // addServiceDesk
             // 
-            this.addServiceDesk.Location = new System.Drawing.Point(139, 153);
+            this.addServiceDesk.Location = new System.Drawing.Point(151, 151);
             this.addServiceDesk.Name = "addServiceDesk";
             this.addServiceDesk.Size = new System.Drawing.Size(102, 23);
             this.addServiceDesk.TabIndex = 25;
@@ -268,7 +269,7 @@
             // 
             // addStewardess
             // 
-            this.addStewardess.Location = new System.Drawing.Point(100, 415);
+            this.addStewardess.Location = new System.Drawing.Point(15, 386);
             this.addStewardess.Name = "addStewardess";
             this.addStewardess.Size = new System.Drawing.Size(238, 23);
             this.addStewardess.TabIndex = 26;
@@ -336,9 +337,9 @@
             // 
             // stopAirplaneGenerate
             // 
-            this.stopAirplaneGenerate.Location = new System.Drawing.Point(582, 415);
+            this.stopAirplaneGenerate.Location = new System.Drawing.Point(12, 302);
             this.stopAirplaneGenerate.Name = "stopAirplaneGenerate";
-            this.stopAirplaneGenerate.Size = new System.Drawing.Size(168, 23);
+            this.stopAirplaneGenerate.Size = new System.Drawing.Size(241, 23);
             this.stopAirplaneGenerate.TabIndex = 34;
             this.stopAirplaneGenerate.Text = "Зупинити генерацію літаків";
             this.stopAirplaneGenerate.UseVisualStyleBackColor = true;
@@ -346,9 +347,9 @@
             // 
             // addHumanToQeue
             // 
-            this.addHumanToQeue.Location = new System.Drawing.Point(160, 386);
+            this.addHumanToQeue.Location = new System.Drawing.Point(12, 348);
             this.addHumanToQeue.Name = "addHumanToQeue";
-            this.addHumanToQeue.Size = new System.Drawing.Size(144, 23);
+            this.addHumanToQeue.Size = new System.Drawing.Size(155, 23);
             this.addHumanToQeue.TabIndex = 35;
             this.addHumanToQeue.Text = "Додати людину до черги";
             this.addHumanToQeue.UseVisualStyleBackColor = true;
@@ -374,7 +375,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(509, 386);
+            this.button1.Location = new System.Drawing.Point(12, 224);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(241, 23);
             this.button1.TabIndex = 38;
@@ -386,7 +387,7 @@
             // 
             this.button3.Location = new System.Drawing.Point(12, 194);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(211, 23);
+            this.button3.Size = new System.Drawing.Size(241, 23);
             this.button3.TabIndex = 39;
             this.button3.Text = "Запустити генерацію людей в черги";
             this.button3.UseVisualStyleBackColor = true;
@@ -394,19 +395,30 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 224);
+            this.button4.Location = new System.Drawing.Point(12, 273);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(168, 23);
+            this.button4.Size = new System.Drawing.Size(241, 23);
             this.button4.TabIndex = 40;
             this.button4.Text = "Запустити генерацію літаків";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(610, 386);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(140, 49);
+            this.start.TabIndex = 41;
+            this.start.Text = "StartService";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 450);
+            this.Controls.Add(this.start);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
@@ -450,6 +462,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button start;
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;

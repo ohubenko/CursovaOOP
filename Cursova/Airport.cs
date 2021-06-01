@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace Cursova
         ///<value> </value>
         private List<ServiceFrontDesk> _frontDesks;
 
-        private Queue<Passanger> _passangersWithTicket;
+        private ConcurrentQueue<Passanger> _passangersWithTicket;
         private Queue<Passanger> _passangersForArrival;
         private Queue<Airplane> _airplanes;
         private Queue<Stewardess> _stewardesses;
@@ -48,7 +50,7 @@ namespace Cursova
         {
             _airplanes = new Queue<Airplane>();
             _frontDesks = new List<ServiceFrontDesk>();
-            _passangersWithTicket = new Queue<Passanger>();
+            _passangersWithTicket = new ConcurrentQueue<Passanger>();
             _stewardesses = new Queue<Stewardess>();
         }
 
@@ -73,20 +75,34 @@ namespace Cursova
             Thread.Sleep(5000);
             await StartGenerationHuman();
             Thread.Sleep(10_000);
-            
         }
 
         public void arrival()
         {
-            var parallelLoopResult = Parallel.ForEach(_frontDesks,
-                desk => desk.register(_passangersWithTicket.Dequeue(), _passangersForArrival));
-            if (parallelLoopResult.IsCompleted)
+            if (_frontDesks.Count > 0 && _passangersWithTicket.Count > 0)
             {
+                int countPassangers = _passangersWithTicket.Count / _frontDesks.Count;
+                foreach (var desk in _frontDesks)
+                {
+                    for (int i = 0; i < countPassangers; i++)
+                    {
+                        Passanger passanger;
+                        while(_passangersWithTicket.TryDequeue(out passanger))
+                            desk.register(passanger, _passangersForArrival);
+                    }
+                }
                 _airplanes.Peek();
-                _passangersForArrival.Clear();
+                StatisticStorage.addTotalFlying(countPassangers);
             }
         }
 
+        public async void startSell()
+        {
+            foreach (ServiceFrontDesk serviceFrontDesk in _frontDesks)
+            {
+                await Task.Run(() => serviceFrontDesk.sellTicket(_passangersWithTicket));
+            }
+        }
 
         public async Task StartGenerationHuman()
         {
@@ -105,7 +121,7 @@ namespace Cursova
                 _airplanes.Dequeue();
                 var i = Parse(_labelCountAirplane.Text);
                 i--;
-                _labelCountAirplane.Text = i.ToString();
+                _labelCountAirplane.Invoke(new Action(() => { _labelCountAirplane.Text = i.ToString(); }));
             }
         }
 
@@ -148,7 +164,7 @@ namespace Cursova
         {
             var i = Parse(label.Text);
             i++;
-            label.Text = i.ToString();
+            label.Invoke(new Action(() => label.Text = i.ToString()));
         }
 
         public void AddHuman()
@@ -158,14 +174,22 @@ namespace Cursova
             {
                 ServiceFrontDesk minimalDesk = _frontDesks.OrderBy(desk => desk.sizeQueue()).First();
                 minimalDesk.add(new Human("Passanger", "random"));
-                _labelCountHumanInQueue.Text = _frontDesks.Sum(desk => desk.sizeQueue()).ToString();
+                _labelCountHumanInQueue.Invoke(new Action(() =>
+                {
+                    _labelCountHumanInQueue.Text = GetTotalSizeQueueToDesks().ToString();
+                }));
             }
             else
             {
                 var i = Parse(_labelSkippedHuman.Text);
                 i++;
-                _labelSkippedHuman.Text = i.ToString();
+                _labelSkippedHuman.Invoke(new Action(() => _labelSkippedHuman.Text = i.ToString()));
             }
+        }
+
+        public int GetTotalSizeQueueToDesks()
+        {
+            return _frontDesks.Sum(desk => desk.sizeQueue());
         }
     }
 }

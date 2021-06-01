@@ -6,12 +6,15 @@ namespace Cursova
 {
     public class FisrtClassServiceDesk : AbstractServiceDesk, ServiceFrontDesk
     {
+        private static AutoResetEvent waitHendler = new AutoResetEvent(true);
+
         public FisrtClassServiceDesk(Stewardess stewardess) : base(stewardess)
         {
         }
 
         public void register(Passanger passanger, Queue<Passanger> passangersFoWaitngs)
         {
+            waitHendler.WaitOne();
             if (passanger.getClassPassanger() == AirlineClass.FIST)
             {
                 var registerTime = new Random().Next(1_000, 30_000);
@@ -26,6 +29,8 @@ namespace Cursova
                 Thread.Sleep(timeService);
                 passangersFoWaitngs.Enqueue(passanger);
             }
+
+            waitHendler.Set();
         }
     }
 }
