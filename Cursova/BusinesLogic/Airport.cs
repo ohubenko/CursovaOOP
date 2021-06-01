@@ -15,7 +15,7 @@ namespace Cursova
     /// </summary>
     public class Airport
     {
-        ///<value> </value>
+        
         private List<ServiceFrontDesk> _frontDesks;
 
         private ConcurrentQueue<Passanger> _passangersWithTicket;
@@ -51,6 +51,7 @@ namespace Cursova
             _airplanes = new Queue<Airplane>();
             _frontDesks = new List<ServiceFrontDesk>();
             _passangersWithTicket = new ConcurrentQueue<Passanger>();
+            _passangersForArrival = new Queue<Passanger>();
             _stewardesses = new Queue<Stewardess>();
         }
 
@@ -77,25 +78,6 @@ namespace Cursova
             Thread.Sleep(10_000);
         }
 
-        public void arrival()
-        {
-            if (_frontDesks.Count > 0 && _passangersWithTicket.Count > 0)
-            {
-                int countPassangers = _passangersWithTicket.Count / _frontDesks.Count;
-                foreach (var desk in _frontDesks)
-                {
-                    for (int i = 0; i < countPassangers; i++)
-                    {
-                        Passanger passanger;
-                        while(_passangersWithTicket.TryDequeue(out passanger))
-                            desk.register(passanger, _passangersForArrival);
-                    }
-                }
-                _airplanes.Peek();
-                StatisticStorage.addTotalFlying(countPassangers);
-            }
-        }
-
         public async void startSell()
         {
             foreach (ServiceFrontDesk serviceFrontDesk in _frontDesks)
@@ -116,14 +98,34 @@ namespace Cursova
 
         public void StartPlane()
         {
-            if (_airplanes.Count > 1)
+            var thread = new Thread(() =>
             {
-                _airplanes.Dequeue();
-                var i = Parse(_labelCountAirplane.Text);
-                i--;
-                _labelCountAirplane.Invoke(new Action(() => { _labelCountAirplane.Text = i.ToString(); }));
-            }
+                if (_airplanes.Count > 1)
+                {
+                    if (_frontDesks.Count > 0 && _passangersWithTicket.Count > 0)
+                    {
+                        int countPassangers = _passangersWithTicket.Count / _frontDesks.Count;
+                        foreach (var desk in _frontDesks)
+                        {
+                            for (int i = 0; i < countPassangers; i++)
+                            {
+                                Passanger passanger;
+                                while (_passangersWithTicket.TryDequeue(out passanger))
+                                    desk.register(passanger, _passangersForArrival);
+                            }
+                        }
+                        _airplanes.Dequeue();
+                        var lac = Parse(_labelCountAirplane.Text);
+                        lac--;
+                        _labelCountAirplane.Invoke(new Action(() => { _labelCountAirplane.Text = lac.ToString(); }));
+                        StatisticStorage.addTotalFlying(countPassangers);
+                    }
+                }
+            });
+            thread.IsBackground = true;
+            thread.Start();
         }
+
 
         public void AddStewardes()
         {

@@ -51,9 +51,9 @@ namespace Cursova
         public static void addRegisterTime(int time) => registerTime.Add(time);
 
         public static double getAvgSellTime() => sellTime.Average();
-        public static double getAvgRegisterTime() => registerTime.Average();
+        public static double getAvgRegisterTime() => registerTime.Count > 0 ? registerTime.Average() : 0;
 
         public static int getMaximumSellTime() => sellTime.Max();
-        public static int getMaximumRegisterTime() => sellTime.Max();
+        public static int getMaximumRegisterTime() => registerTime.Count > 0 ? sellTime.Max() : 0;
     }
 }

@@ -1,6 +1,4 @@
-﻿using static System.Console;
-
-namespace Cursova
+﻿namespace Cursova
 {
     public abstract class AbstractPassanger : Human, Passanger
     {

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Cursova
 {
@@ -30,7 +27,7 @@ namespace Cursova
 
         public void setStewaredss(Stewardess stewardess) => Stewardess = stewardess;
 
-        public void sellTicket(Queue<Passanger> _passangersForWait)
+        public void sellTicket(ConcurrentQueue<Passanger> _passangersForWait)
         {
             while (isWorked())
             {
@@ -38,6 +35,7 @@ namespace Cursova
                 {
                     waitHendler.WaitOne();
                     AirlineClass @class = genearateAirlineClass();
+                    //TODO поліморфізм
                     var timeService = _random.Next(1000);
                     StatisticStorage.addSelltime(timeService);
                     Human peekHuman = Humans.Dequeue();

@@ -60,20 +60,6 @@ namespace Cursova
             totalHumanQeue.Text = airport.GetTotalSizeQueueToDesks().ToString();
         }
 
-        private void totalRegisterPassanger_Click(object sender, EventArgs e)
-        {
-            avgTimeRegister.Text = StatisticStorage.getAvgRegisterTime().ToString(CultureInfo.CurrentCulture);
-            maxTimeReg.Text = StatisticStorage.getMaximumRegisterTime().ToString();
-        }
-
-
-        private void countOfAirplane_TextChanged(object sender, EventArgs e)
-        {
-            var thread = new Thread(o => { airport.arrival(); });
-            thread.IsBackground = true;
-            thread.Start();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Generator.StopHumanGenerate();
@@ -93,6 +79,21 @@ namespace Cursova
         private void start_Click(object sender, EventArgs e)
         {
             airport.startSell();
+            var thread = new Thread(() =>
+            {
+                while (true)
+                {
+                    avgTimeRegister.Invoke(new Action(() =>
+                        avgTimeRegister.Text =
+                            StatisticStorage.getAvgRegisterTime().ToString(CultureInfo.CurrentCulture)
+                    ));
+                    maxTimeReg.Invoke(new Action(() =>
+                        maxTimeReg.Text = StatisticStorage.getMaximumRegisterTime().ToString()));
+                    Thread.Sleep(3_000);
+                }
+            });
+            thread.IsBackground = true;
+            thread.Start();
         }
     }
 }

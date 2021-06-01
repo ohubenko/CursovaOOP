@@ -87,7 +87,6 @@
             this.countOfAirplane.Size = new System.Drawing.Size(103, 19);
             this.countOfAirplane.TabIndex = 2;
             this.countOfAirplane.Text = "0";
-            this.countOfAirplane.TextChanged += new System.EventHandler(this.countOfAirplane_TextChanged);
             // 
             // label2
             // 
@@ -371,7 +370,7 @@
             this.totalRegisterPassanger.Size = new System.Drawing.Size(67, 19);
             this.totalRegisterPassanger.TabIndex = 37;
             this.totalRegisterPassanger.Text = "0";
-            this.totalRegisterPassanger.Click += new System.EventHandler(this.totalRegisterPassanger_Click);
+            // this.totalRegisterPassanger.Click += new System.EventHandler(this.totalRegisterPassanger_Click);
             // 
             // button1
             // 

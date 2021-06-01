@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Cursova
+﻿namespace Cursova
 {
     public class SecondClassServiceDesk : AbstractServiceDesk
     {

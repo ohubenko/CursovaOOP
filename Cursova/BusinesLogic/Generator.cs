@@ -16,8 +16,10 @@ namespace Cursova
 
         private static Timer _airplaneTimer;
         private static Timer _passangerTimer;
+        
         private static int _periodAirplane = 15_000;
         private static int _periodHuman = 1_000;
+        
         private static AutoResetEvent waitHendler = new AutoResetEvent(true);
 
         public static async Task GenerateAirplane(Queue<Airplane> queue, Label label)
@@ -42,7 +44,6 @@ namespace Cursova
             if (airplanes != null)
             {
                 _countAirplane.Invoke(new Action(() => { _countAirplane.Text = airplanes.Count.ToString(); }));
-
                 if (airplanes.Count < 10)
                 {
                     airplanes.Enqueue(new Airplane(new Random().Next(999, 9999).ToString()));
@@ -58,7 +59,7 @@ namespace Cursova
             {
                 ServiceFrontDesk minimalDesk = desks.OrderBy(desk => desk.sizeQueue()).First();
                 minimalDesk.add(new Human("Passanger", "random"));
-                _skipped.Invoke(new Action(() =>
+                _countQueueHuman.Invoke(new Action(() =>
                 {
                     _countQueueHuman.Text = desks.Sum(desk => desk.sizeQueue()).ToString();
                 }));
@@ -69,7 +70,6 @@ namespace Cursova
                 i++;
                 _skipped.Invoke(new Action(() => { _skipped.Text = i.ToString(); }));
             }
-
             waitHendler.Set();
         }
 
