@@ -29,8 +29,8 @@ namespace Cursova
                 Thread.Sleep(timeService);
                 passangersFoWaitngs.Enqueue(passanger);
             }
-
             waitHendler.Set();
+            StatisticStorage.addTotalRegister();
         }
     }
 }

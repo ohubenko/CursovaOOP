@@ -44,7 +44,7 @@ namespace Cursova
         {
             var i = int.Parse(totalRegister.Text);
             i++;
-            totalRegister.Invoke(new Action(() => { totalSell.Text = i.ToString(); }));
+            totalRegister.Invoke(new Action(() => { totalRegister.Text = i.ToString(); }));
         }
 
         public static void addSelltime(int time) => sellTime.Add(time);

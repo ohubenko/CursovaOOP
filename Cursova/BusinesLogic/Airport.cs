@@ -15,7 +15,6 @@ namespace Cursova
     /// </summary>
     public class Airport
     {
-        
         private List<ServiceFrontDesk> _frontDesks;
 
         private ConcurrentQueue<Passanger> _passangersWithTicket;
@@ -114,11 +113,12 @@ namespace Cursova
                                     desk.register(passanger, _passangersForArrival);
                             }
                         }
+
                         _airplanes.Dequeue();
                         var lac = Parse(_labelCountAirplane.Text);
                         lac--;
                         _labelCountAirplane.Invoke(new Action(() => { _labelCountAirplane.Text = lac.ToString(); }));
-                        StatisticStorage.addTotalFlying(countPassangers);
+                        StatisticStorage.addTotalFlying(countPassangers * _frontDesks.Count);
                     }
                 }
             });

@@ -35,7 +35,7 @@ namespace Cursova
                 {
                     waitHendler.WaitOne();
                     AirlineClass @class = genearateAirlineClass();
-                    //TODO поліморфізм
+
                     var timeService = _random.Next(1000);
                     StatisticStorage.addSelltime(timeService);
                     Human peekHuman = Humans.Dequeue();
