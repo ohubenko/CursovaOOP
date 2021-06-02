@@ -172,8 +172,8 @@ namespace Cursova
 
         public void AddHuman()
         {
-            int size = _frontDesks.Count != 0 ? _frontDesks.Sum(desk => desk.sizeQueue()) : 0;
-            if (_frontDesks.Count > 0 && CriticalSize < size )
+            var sum = _frontDesks.Sum(desk => desk.sizeQueue());
+            if (_frontDesks.Count > 0 && sum < CriticalSize)
             {
                 ServiceFrontDesk minimalDesk = _frontDesks.OrderBy(desk => desk.sizeQueue()).First();
                 minimalDesk.add(new Human("Passanger", "random"));

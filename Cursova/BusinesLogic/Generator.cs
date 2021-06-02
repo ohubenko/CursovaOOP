@@ -55,8 +55,8 @@ namespace Cursova
         {
             waitHendler.WaitOne();
             List<ServiceFrontDesk> desks = (List<ServiceFrontDesk>) state;
-            int size = desks.Count != 0 ? desks.Sum(desk => desk.sizeQueue()) : 0;
-            if (desks != null && desks.Count > 0 && CriticalSize < size)
+            var sum = desks.Sum(desk => desk.sizeQueue());
+            if (desks != null && desks.Count > 0 && CriticalSize < sum)
             {
                 ServiceFrontDesk minimalDesk = desks.OrderBy(desk => desk.sizeQueue()).First();
                 minimalDesk.add(new Human("Passanger", "random"));
